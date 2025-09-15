@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/utils/app_colors.dart';
+import 'package:e_commerce/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextButton extends StatelessWidget {
@@ -16,15 +17,7 @@ class CustomTextButton extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         backgroundColor: AppColors.primaryColor,
       ),
-      child: Text(
-        text,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 16,
-          fontWeight: FontWeight.w700,
-          fontFamily: 'Cairo',
-        ),
-      ),
+      child: Text(text, style: TextStyles.bold16.copyWith(color: Colors.white)),
     );
   }
 }

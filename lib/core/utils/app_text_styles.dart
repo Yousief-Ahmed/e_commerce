@@ -7,7 +7,6 @@ abstract class TextStyles {
   );
   static const TextStyle bold23 = TextStyle(
     fontWeight: FontWeight.bold,
-    fontFamily: 'Cairo',
     fontSize: 23,
   );
 

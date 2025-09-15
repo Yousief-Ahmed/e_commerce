@@ -24,18 +24,23 @@ class OnBoardingPageView extends StatelessWidget {
             textAlign: TextAlign.center,
             text: TextSpan(
               text: "مرحباً بك في ",
-              style: TextStyles.bold23.copyWith(color: Color(0xFF0C0D0D)),
+              style: TextStyles.bold23.copyWith(
+                color: Color(0xFF0C0D0D),
+                fontFamily: 'Cairo',
+              ),
               children: <TextSpan>[
                 TextSpan(
                   text: "Fruit",
                   style: TextStyles.bold23.copyWith(
                     color: AppColors.primaryColor,
+                    fontFamily: 'Cairo',
                   ),
                 ),
                 TextSpan(
                   text: "HUB",
                   style: TextStyles.bold23.copyWith(
                     color: AppColors.secondaryColor,
+                    fontFamily: 'Cairo',
                   ),
                 ),
               ],
