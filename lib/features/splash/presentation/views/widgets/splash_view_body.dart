@@ -4,7 +4,6 @@ import 'package:e_commerce/core/utils/app_images.dart';
 import 'package:e_commerce/features/auth/presentation/views/login_view.dart';
 import 'package:e_commerce/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart' as SharePref;
 import 'package:flutter_svg/svg.dart';
 
 class SplashViewBody extends StatefulWidget {

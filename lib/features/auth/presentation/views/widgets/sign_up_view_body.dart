@@ -1,11 +1,8 @@
 import 'package:e_commerce/core/constants.dart';
-import 'package:e_commerce/core/utils/app_colors.dart';
-import 'package:e_commerce/core/utils/app_text_styles.dart';
 import 'package:e_commerce/core/widgets/custom_text_button.dart';
 import 'package:e_commerce/core/widgets/custom_text_form_field.dart';
 import 'package:e_commerce/features/auth/presentation/views/widgets/already_have_account.dart';
 import 'package:e_commerce/features/auth/presentation/views/widgets/auth_app_bar.dart';
-import 'package:e_commerce/features/auth/presentation/views/widgets/dont_have_account_widget.dart';
 import 'package:e_commerce/features/auth/presentation/views/widgets/terms_and_conditions.dart';
 import 'package:flutter/material.dart';
 
