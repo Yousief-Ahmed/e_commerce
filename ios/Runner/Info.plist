@@ -52,5 +52,43 @@
 		</array>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<key>GIDClientID</key>
+<string>175130783468-2pcveruhg79mi1qsu7cdlotq4tajotv0.apps.googleusercontent.com</string>
+<!-- Put me in the [my_project]/ios/Runner/Info.plist file -->
+<!-- Google Sign-in Section -->
+<key>CFBundleURLTypes</key>
+<array>
+	<dict>
+		<key>CFBundleTypeRole</key>
+		<string>Editor</string>
+		<key>CFBundleURLSchemes</key>
+		<array>
+			<!-- TODO Replace this value: -->
+			<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
+			<string>com.googleusercontent.apps.175130783468-2pcveruhg79mi1qsu7cdlotq4tajotv0</string>
+		</array>
+	</dict>
+</array>
+<!-- End of the Google Sign-in Section -->
+<key>CFBundleURLTypes</key>
+<array>
+  <dict>
+    <key>CFBundleURLSchemes</key>
+    <array>
+      <string>fb2919721521750064</string>
+    </array>
+  </dict>
+</array>
+<key>FacebookAppID</key>
+<string>2919721521750064</string>
+<key>FacebookClientToken</key>
+<string>1bb8cc5102aaabc8468a6ff2e0ebe80a</string>
+<key>FacebookDisplayName</key>
+<string>Fruit Hub</string>
+<key>LSApplicationQueriesSchemes</key>
+<array>
+  <string>fbapi</string>
+  <string>fb-messenger-share-api</string>
+</array>
 	</dict>
 </plist>

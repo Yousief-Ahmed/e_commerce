@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 import 'dart:math' as math;
 import 'package:crypto/crypto.dart';
 import 'package:e_commerce/core/errors/exceptions.dart';
@@ -60,6 +61,10 @@ class FirebaseAuthService {
       );
       if (e.code == 'user-not-found') {
         throw CustomException(message: 'المستخدم غير موجود.');
+      } else if (e.code == 'invalid-credential') {
+        throw CustomException(
+          message: 'البريد الالكتروني او كلمة المرور غير صحيحة.',
+        );
       } else if (e.code == 'wrong-password') {
         throw CustomException(
           message: 'البريد الالكتروني او كلمة المرور غير صحيحة.',
@@ -132,6 +137,8 @@ class FirebaseAuthService {
   ///////////////////////////////////////////////////////////
 
   Future<User> signInWithFacebook() async {
+    final rawNonce = generateNonce();
+    final nonce = sha256ofString(rawNonce);
     try {
       final LoginResult loginResult = await FacebookAuth.instance.login();
       if (loginResult.status != LoginStatus.success) {
@@ -145,12 +152,35 @@ class FirebaseAuthService {
           message: 'لم يتم استرجاع Access Token من فيسبوك.',
         );
       }
-      final OAuthCredential facebookCred = FacebookAuthProvider.credential(
+      OAuthCredential facebookCred = FacebookAuthProvider.credential(
         token,
       );
       final userCred = await FirebaseAuth.instance.signInWithCredential(
         facebookCred,
       );
+        if (Platform.isIOS) {
+        switch (loginResult.accessToken!.type) {
+          case AccessTokenType.classic:
+            final token = loginResult.accessToken as ClassicToken;
+            facebookCred = FacebookAuthProvider.credential(
+              token.authenticationToken!,
+            );
+            break;
+          case AccessTokenType.limited:
+            final token = loginResult.accessToken as LimitedToken;
+            facebookCred = OAuthCredential(
+              providerId: 'facebook.com',
+              signInMethod: 'oauth',
+              idToken: token.tokenString,
+              rawNonce: rawNonce,
+            );
+            break;
+        }
+      } else {
+        facebookCred = FacebookAuthProvider.credential(
+          loginResult.accessToken!.tokenString,
+        );
+      }
       return userCred.user!;
     } on FirebaseAuthException catch (e) {
       // بدون استخدام fetchSignInMethodsForEmail
@@ -180,6 +210,7 @@ class FirebaseAuthService {
       log('Exception in signInWithFacebook: $e');
       throw CustomException(message: 'حدث خطأ غير متوقع.');
     }
+    
   }
 
   Future<User> _signInWithGoogleAndLink(AuthCredential pendingCred) async {
@@ -211,10 +242,7 @@ class FirebaseAuthService {
     return linked.user!;
   }
 
-  
-
-
-/// Generates a cryptographically secure random nonce, to be included in a
+  /// Generates a cryptographically secure random nonce, to be included in a
   /// credential request.
   String generateNonce([int length = 32]) {
     final charset =
@@ -257,7 +285,8 @@ class FirebaseAuthService {
 
     // Sign in the user with Firebase. If the nonce we generated earlier does
     // not match the nonce in `appleCredential.identityToken`, sign in will fail.
-    return (await FirebaseAuth.instance.signInWithCredential(oauthCredential)).user!;
+    return (await FirebaseAuth.instance.signInWithCredential(
+      oauthCredential,
+    )).user!;
   }
-
 }

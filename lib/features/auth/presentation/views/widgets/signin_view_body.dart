@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:e_commerce/core/constants.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_images.dart';
@@ -77,11 +79,11 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                   }
                 },
               ),
-              SizedBox(height: 33),
+              const SizedBox(height: 33),
               const DontHaveAccount(),
               SizedBox(height: 33),
               const OrDivider(),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               SocialLoginButton(
                 iconName: Assets.imagesGoogleIcon,
                 label: 'تسجيل بواسطة جوجل ',
@@ -89,15 +91,21 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                   context.read<SigninCubit>().signInWithGoogle();
                 },
               ),
-              SizedBox(height: 16),
-              SocialLoginButton(
-                iconName: Assets.imagesAppleIcon,
-                label: 'تسجيل بواسطة ابل ',
-                onPressed: () {
-                  context.read<SigninCubit>().signInWithApple();
-                },
-              ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
+              Platform.isIOS
+                  ? Column(
+                      children: [
+                        SocialLoginButton(
+                          iconName: Assets.imagesAppleIcon,
+                          label: 'تسجيل بواسطة ابل ',
+                          onPressed: () {
+                            context.read<SigninCubit>().signInWithApple();
+                          },
+                        ),
+                        SizedBox(height: 16),
+                      ],
+                    )
+                  : const SizedBox(),
               SocialLoginButton(
                 iconName: Assets.imagesFacebookIcon,
                 label: 'تسجيل بواسطة فيسبوك ',
