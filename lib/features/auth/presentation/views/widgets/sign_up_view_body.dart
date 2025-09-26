@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:e_commerce/core/constants.dart';
 import 'package:e_commerce/core/helper_functions/build_error_bar.dart';
 import 'package:e_commerce/core/widgets/custom_text_button.dart';

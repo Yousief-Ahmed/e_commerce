@@ -12,6 +12,7 @@ class AuthRepoImpl extends AuthRepo {
   final FirebaseAuthService firebaseAuthService;
 
   AuthRepoImpl({required this.firebaseAuthService});
+
   @override
   Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
     String email,
@@ -57,5 +58,45 @@ class AuthRepoImpl extends AuthRepo {
         ServerFailure('حدث خطأ غير معروف. الرجاء المحاولة مرة أخرى.'),
       );
     }
+  }
+
+  @override
+  Future<Either<Failure, UserEntity>> signInWithGoogle() async {
+    try {
+      var user = await firebaseAuthService.signInWithGoogle();
+      return right(UserModel.fromFirebaseUser(user));
+    } catch (e) {
+      log('Exception in AuthRepoImpl.signInWithGoogle: ${e.toString()}');
+      return left(
+        ServerFailure('حدث خطأ غير معروف. الرجاء المحاولة مرة أخرى.'),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserEntity>> signInWithFacebook() async {
+    try {
+      var user = await firebaseAuthService.signInWithFacebook();
+      return right(UserModel.fromFirebaseUser(user));
+    } catch (e) {
+      log('Exception in AuthRepoImpl.signInWithFacebook: ${e.toString()}');
+      return left(
+        ServerFailure('حدث خطأ غير معروف. الرجاء المحاولة مرة أخرى.'),
+      );
+    }
+  }
+  
+  @override
+  Future<Either<Failure, UserEntity>> signInWithApple() async {
+    try {
+      var user = await firebaseAuthService.signInWithApple();
+      return right(UserModel.fromFirebaseUser(user));
+    } catch (e) {
+      log('Exception in AuthRepoImpl.signInWithApple: ${e.toString()}');
+      return left(
+        ServerFailure('حدث خطأ غير معروف. الرجاء المحاولة مرة أخرى.'),
+      );
+    }
+   
   }
 }
