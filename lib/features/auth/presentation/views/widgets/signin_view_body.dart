@@ -39,7 +39,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
               SizedBox(height: 24),
               CustomTextFormField(
                 onSaved: (value) {
-                  email = value!;
+                  email = value!.trim();
                 },
                 hintText: "البريد الإلكتروني",
                 keyboardType: TextInputType.emailAddress,

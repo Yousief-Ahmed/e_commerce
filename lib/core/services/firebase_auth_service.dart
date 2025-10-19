@@ -10,6 +10,10 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class FirebaseAuthService {
+  Future deleteUser() async {
+    await FirebaseAuth.instance.currentUser!.delete();
+  }
+
   Future<User> createUserWithEmailAndPassword(
     String email,
     String password,
@@ -138,7 +142,6 @@ class FirebaseAuthService {
 
   Future<User> signInWithFacebook() async {
     final rawNonce = generateNonce();
-    final nonce = sha256ofString(rawNonce);
     try {
       final LoginResult loginResult = await FacebookAuth.instance.login();
       if (loginResult.status != LoginStatus.success) {
@@ -152,13 +155,11 @@ class FirebaseAuthService {
           message: 'لم يتم استرجاع Access Token من فيسبوك.',
         );
       }
-      OAuthCredential facebookCred = FacebookAuthProvider.credential(
-        token,
-      );
+      OAuthCredential facebookCred = FacebookAuthProvider.credential(token);
       final userCred = await FirebaseAuth.instance.signInWithCredential(
         facebookCred,
       );
-        if (Platform.isIOS) {
+      if (Platform.isIOS) {
         switch (loginResult.accessToken!.type) {
           case AccessTokenType.classic:
             final token = loginResult.accessToken as ClassicToken;
@@ -210,7 +211,6 @@ class FirebaseAuthService {
       log('Exception in signInWithFacebook: $e');
       throw CustomException(message: 'حدث خطأ غير متوقع.');
     }
-    
   }
 
   Future<User> _signInWithGoogleAndLink(AuthCredential pendingCred) async {
@@ -288,5 +288,9 @@ class FirebaseAuthService {
     return (await FirebaseAuth.instance.signInWithCredential(
       oauthCredential,
     )).user!;
+  }
+
+  bool isLoggedIn() {
+    return FirebaseAuth.instance.currentUser != null;
   }
 }

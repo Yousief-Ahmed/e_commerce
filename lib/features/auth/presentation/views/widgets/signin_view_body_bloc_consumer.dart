@@ -2,8 +2,10 @@ import 'package:e_commerce/core/helper_functions/build_error_bar.dart';
 import 'package:e_commerce/core/widgets/custom_progress_hud.dart';
 import 'package:e_commerce/features/auth/presentation/cubits/signin_cubit/signin_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/views/widgets/signin_view_body.dart';
+import 'package:e_commerce/features/home/presentaion/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 class SigninViewBodyBlocConsumer extends StatelessWidget {
   const SigninViewBodyBlocConsumer({super.key});
@@ -13,13 +15,19 @@ class SigninViewBodyBlocConsumer extends StatelessWidget {
     return BlocConsumer<SigninCubit, SigninState>(
       listener: (context, state) {
         if (state is SigninFailure) {
-          buildErrorBar(state.message);
+          buildErrorBar(message: state.message);
+        }
+        if (state is SigninSuccess) {
+          Navigator.pushReplacementNamed(
+            context,
+           HomeView.routeName
+          );
         }
       },
       builder: (context, state) {
         return CustomProgressHud(
           isLoading: state is SigninLoading ? true : false,
-          child:const SigninViewBody(),
+          child: const SigninViewBody(),
         );
       },
     );

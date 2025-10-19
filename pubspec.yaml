@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cloud_firestore: ^6.0.2
   crypto: ^3.0.6
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
@@ -41,6 +42,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_svg: ^2.2.0
+  flutter_svg_provider: ^1.0.7
   fluttertoast: ^9.0.0
   get_it: ^8.2.0
   google_sign_in: ^6.2.1
@@ -49,6 +51,7 @@ dependencies:
   page_transition: ^2.2.1
   shared_preferences: ^2.5.3
   sign_in_with_apple: ^7.0.1
+
 dev_dependencies:
   flutter_launcher_icons: "^0.14.4"
 
@@ -75,6 +78,8 @@ flutter:
     - assets/images/app_icon/
     - assets/images/page_view_item/
     - assets/images/
+    - assets/images/bold/
+    - assets/images/outlined/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

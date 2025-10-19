@@ -34,7 +34,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               SizedBox(height: 24),
               CustomTextFormField(
                 onSaved: (value) {
-                  name = value!;
+                  name = value!.trim();
                 },
                 hintText: 'الاسم كامل',
                 keyboardType: TextInputType.name,
@@ -42,7 +42,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               SizedBox(height: 16),
               CustomTextFormField(
                 onSaved: (value) {
-                  email = value!;
+                  email = value!.trim();
                 },
                 hintText: 'البريد الإلكتروني',
                 keyboardType: TextInputType.emailAddress,
@@ -74,7 +74,9 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                             name: name,
                           );
                     } else {
-                      buildErrorBar('يجب الموافقة على الشروط والأحكام');
+                      buildErrorBar(
+                        message: 'يجب الموافقة على الشروط والأحكام',
+                      );
                     }
                   } else {
                     autovalidateMode = AutovalidateMode.always;

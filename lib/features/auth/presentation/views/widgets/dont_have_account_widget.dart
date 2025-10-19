@@ -3,7 +3,6 @@ import 'package:e_commerce/core/utils/app_text_styles.dart';
 import 'package:e_commerce/features/auth/presentation/views/sign_up_view.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 
 class DontHaveAccount extends StatelessWidget {
   const DontHaveAccount({super.key});
@@ -22,14 +21,9 @@ class DontHaveAccount extends StatelessWidget {
           TextSpan(
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                Navigator.push(
+                Navigator.pushNamed(
                   context,
-                  PageTransition(
-                    type: PageTransitionType.leftToRight,
-                    child: SignUpView(),
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeOut,
-                  ),
+                 SignUpView.routeName,
                 );
               },
             text: 'قم بإنشاء حساب',

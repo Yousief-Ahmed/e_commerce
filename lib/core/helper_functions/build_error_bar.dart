@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-void buildErrorBar(String message) {
+void buildErrorBar({required String message}) {
   Fluttertoast.showToast(
     msg: message,
     toastLength: Toast.LENGTH_LONG,
