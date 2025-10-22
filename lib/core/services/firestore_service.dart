@@ -20,6 +20,7 @@ class FireStoreService implements DatabaseService {
   Future<dynamic> getData({
     required String collectionPath,
     String? documentId,
+    Map<String, dynamic>? query,
   }) async {
     if (documentId != null) {
       var data = await firestore
@@ -28,8 +29,20 @@ class FireStoreService implements DatabaseService {
           .get();
       return data.data();
     } else {
-      var data = await firestore.collection(collectionPath).get();
-      return data.docs.map((e) => e.data()).toList();
+      Query<Map<String, dynamic>> data = firestore.collection(collectionPath);
+      if (query != null) {
+        if (query['orderBy'] != null) {
+          var orderByField = query['orderBy'];
+          var descending = query['descending'];
+          data = data.orderBy(orderByField, descending: descending);
+        }
+        if (query['limit'] != null) {
+          var limit = query['limit'];
+          data = data.limit(limit);
+        }
+      }
+      var result = await data.get();
+      return result.docs.map((e) => e.data()).toList();
     }
   }
 

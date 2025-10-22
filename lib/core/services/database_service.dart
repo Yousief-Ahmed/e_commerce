@@ -1,4 +1,3 @@
-
 abstract class DatabaseService {
   Future<void> addData({
     required String collectionPath,
@@ -8,9 +7,10 @@ abstract class DatabaseService {
   Future<dynamic> getData({
     required String collectionPath,
     String? documentId,
+    Map<String, dynamic>? query,
   });
 
-  Future <bool> isUserExist({
+  Future<bool> isUserExist({
     required String collectionPath,
     required String documentId,
   });

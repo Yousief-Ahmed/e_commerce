@@ -9,7 +9,6 @@ class ProductModel {
   final String description;
   final num price;
   final bool isFeatured;
-  final File image;
   String? imageUrl;
   final int expirationDuration;
   final bool isOrganic;
@@ -25,7 +24,6 @@ class ProductModel {
     required this.description,
     required this.price,
     required this.isFeatured,
-    required this.image,
     this.imageUrl,
     required this.expirationDuration,
     required this.isOrganic,
@@ -44,7 +42,6 @@ class ProductModel {
       description: json['description'],
       price: json['price'],
       isFeatured: json['isFeatured'],
-      image: File(json['image']),
       imageUrl: json['imageUrl'],
       expirationDuration: json['expirationDate'],
       isOrganic: json['isOrganic'],
@@ -72,7 +69,8 @@ class ProductModel {
       numberOfCalories: numberOfCalories,
       unitAmount: unitAmount,
       reviews: reviews.map((e) => e.toEntity()).toList(),
-      image: image,
+      ratingCount: ratingCount,
+      avgRating: avgRating,
     );
   }
 
