@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/constants.dart';
 import 'package:e_commerce/core/entities/product_entity.dart';
 
 ProductEntity getDummyProduct() {
@@ -5,7 +6,7 @@ ProductEntity getDummyProduct() {
     name: 'Apple',
     description: 'Fresh and juicy apples.',
     price: 1.99,
-    imageUrl: 'https://example.com/images/apple.png',
+    imageUrl: transparentPlaceholder,
     isOrganic: true,
     isFeatured: true,
     expirationDuration: 7,

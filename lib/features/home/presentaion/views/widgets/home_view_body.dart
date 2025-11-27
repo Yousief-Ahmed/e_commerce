@@ -1,10 +1,10 @@
 import 'package:e_commerce/core/constants.dart';
 import 'package:e_commerce/core/cubits/products_cubit/products_cubit.dart';
 import 'package:e_commerce/core/widgets/custom_search_text_field.dart';
-import 'package:e_commerce/features/home/presentaion/views/widgets/best_selling_grid_view.dart';
 import 'package:e_commerce/features/home/presentaion/views/widgets/best_selling_grid_view_bloc_builder.dart';
 import 'package:e_commerce/features/home/presentaion/views/widgets/best_selling_header.dart';
 import 'package:e_commerce/features/home/presentaion/views/widgets/custom_home_app_bar.dart';
+import 'package:e_commerce/features/home/presentaion/views/widgets/home_featured_item.dart';
 import 'package:e_commerce/features/home/presentaion/views/widgets/featured_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,7 +26,10 @@ class _HomeViewBodyState extends State<HomeViewBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+      padding: const EdgeInsets.symmetric(
+        horizontal: kHorizontalPadding,
+        vertical: 16,
+      ),
       child: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
@@ -36,7 +39,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                 SizedBox(height: kHeightSpacing),
                 CustomSearchTextField(),
                 SizedBox(height: 12),
-                FeaturedList(),
+                FeaturedList(featuredItem: () => HomeFeaturedItem()),
                 SizedBox(height: 12),
                 BestSellingHeader(),
                 SizedBox(height: 8),
@@ -49,5 +52,3 @@ class _HomeViewBodyState extends State<HomeViewBody> {
     );
   }
 }
-
-

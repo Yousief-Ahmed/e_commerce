@@ -1,6 +1,6 @@
-import 'dart:io';
 
 import 'package:e_commerce/core/entities/product_entity.dart';
+import 'package:e_commerce/core/helper_functions/get_avg_rating.dart';
 import 'package:e_commerce/core/model/review_model.dart';
 
 class ProductModel {
@@ -48,7 +48,11 @@ class ProductModel {
       numberOfCalories: json['numberOfCalories'],
       unitAmount: json['unitAmount'],
       ratingCount: json['ratingCount'] ?? 0,
-      avgRating: json['avgRating'] ?? 0,
+      avgRating: getAvgRating(
+        (json['reviews'] as List)
+            .map((e) => ReviewModel.fromJson(e).toEntity())
+            .toList(),
+      ),
       reviews: (json['reviews'] as List)
           .map((e) => ReviewModel.fromJson(e))
           .toList(),

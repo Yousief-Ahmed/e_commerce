@@ -3,7 +3,8 @@ import 'package:e_commerce/features/home/presentaion/views/widgets/navigation_ba
 import 'package:flutter/material.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
-  const CustomBottomNavigationBar({super.key});
+  final ValueChanged<int> onItemTapped;
+  const CustomBottomNavigationBar({super.key, required  this.onItemTapped});
 
   @override
   State<CustomBottomNavigationBar> createState() =>
@@ -44,6 +45,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               onTap: () {
                 setState(() {
                   selectedIndex = index;
+                  widget.onItemTapped(index);
                 });
               },
               child: NavigationBarItem(

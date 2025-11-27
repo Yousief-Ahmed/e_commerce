@@ -4,8 +4,8 @@ import 'package:e_commerce/features/home/presentaion/views/widgets/featured_item
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as svg;
 
-class FeaturedItem extends StatelessWidget {
-  const FeaturedItem({super.key});
+class HomeFeaturedItem extends StatelessWidget {
+  const HomeFeaturedItem({super.key});
 
   @override
   Widget build(BuildContext context) {

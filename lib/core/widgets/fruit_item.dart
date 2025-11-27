@@ -1,7 +1,7 @@
 import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
-import 'package:e_commerce/core/utils/app_images.dart';
 import 'package:e_commerce/core/utils/app_text_styles.dart';
+import 'package:e_commerce/core/widgets/custom_network_image.dart';
 import 'package:flutter/material.dart';
 
 class FruitItem extends StatelessWidget {
@@ -17,17 +17,17 @@ class FruitItem extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          Positioned(
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.favorite_outline),
-            ),
-          ),
           Positioned.fill(
             child: Column(
               children: [
                 SizedBox(height: 20),
-                Image.asset(product.imageUrl ?? Assets.imagesWatermelon),
+                AspectRatio(
+                  aspectRatio: 1.24,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(4),
+                    child: CustomNetworkImage(imageUrl: product.imageUrl!,),
+                  ),
+                ),
                 Spacer(),
                 ListTile(
                   title: Text(
@@ -102,8 +102,15 @@ class FruitItem extends StatelessWidget {
               ],
             ),
           ),
+          Positioned(
+            child: IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.favorite_outline),
+            ),
+          ),
         ],
       ),
     );
   }
 }
+

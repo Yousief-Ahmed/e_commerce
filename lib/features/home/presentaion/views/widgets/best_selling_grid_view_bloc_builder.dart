@@ -1,6 +1,5 @@
 import 'package:e_commerce/core/cubits/products_cubit/products_cubit.dart';
 import 'package:e_commerce/core/helper_functions/get_dummy_products.dart';
-import 'package:e_commerce/core/utils/app_text_styles.dart';
 import 'package:e_commerce/core/widgets/custom_error_widget.dart';
 import 'package:e_commerce/features/home/presentaion/views/widgets/best_selling_grid_view.dart';
 import 'package:flutter/material.dart';
