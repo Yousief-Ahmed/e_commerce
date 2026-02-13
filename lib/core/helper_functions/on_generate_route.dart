@@ -2,6 +2,9 @@ import 'package:e_commerce/core/helper_functions/custom_page_routes.dart';
 import 'package:e_commerce/features/auth/presentation/views/signin_view.dart';
 import 'package:e_commerce/features/auth/presentation/views/sign_up_view.dart';
 import 'package:e_commerce/features/best_selling_fruits/presentation/views/widgets/best_selling_view.dart';
+import 'package:e_commerce/features/checkout/presentation/views/checkout_view.dart';
+import 'package:e_commerce/features/home/domain/entities/cart_entity.dart';
+import 'package:e_commerce/features/home/domain/entities/cart_item_entity.dart';
 import 'package:e_commerce/features/home/presentaion/views/main_view.dart';
 import 'package:e_commerce/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:e_commerce/features/splash/presentation/views/splash_view.dart';
@@ -21,6 +24,10 @@ Route<dynamic> ongGenerateRoute(RouteSettings settings) {
       return CustomPageRoutes.slideToRight(MainView());
     case BestSellingView.routeName:
       return CustomPageRoutes.slideToRight(const BestSellingView());
+    case CheckoutView.routeName:
+      return CustomPageRoutes.slideToRight(
+        CheckoutView(cartEntity: settings.arguments as CartEntity),
+      );
 
     default:
       return MaterialPageRoute(

@@ -2,7 +2,9 @@ import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_text_styles.dart';
 import 'package:e_commerce/core/widgets/custom_network_image.dart';
+import 'package:e_commerce/features/home/presentaion/cubit/cart_cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FruitItem extends StatelessWidget {
   final ProductEntity product;
@@ -25,7 +27,7 @@ class FruitItem extends StatelessWidget {
                   aspectRatio: 1.24,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(4),
-                    child: CustomNetworkImage(imageUrl: product.imageUrl!,),
+                    child: CustomNetworkImage(imageUrl: product.imageUrl!),
                   ),
                 ),
                 Spacer(),
@@ -57,43 +59,16 @@ class FruitItem extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ),
+                    ),  
                   ),
-
-                  /* title: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('بطيخ', style: TextStyles.semiBold16),
-                      SizedBox(height: 4),
-                      Text.rich(
-                        TextSpan(
-                          children: [
-                            TextSpan(
-                              text: '20جنية',
-                              style: TextStyles.bold13.copyWith(
-                                color: AppColors.secondaryColor,
-                              ),
-                            ),
-                            TextSpan(
-                              text: ' / ',
-                              style: TextStyles.bold13.copyWith(
-                                color: AppColors.secondaryColor,
-                              ),
-                            ),
-                            TextSpan(
-                              text: 'الكيلو',
-                              style: TextStyles.bold13.copyWith(
-                                color: AppColors.lightSecondaryColor,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ), */
-                  trailing: CircleAvatar(
-                    backgroundColor: AppColors.primaryColor,
-                    child: Icon(Icons.add, color: Colors.white),
+                  trailing: InkWell(
+                    onTap: () {
+                      context.read<CartCubit>().addProduct(product);
+                    },
+                    child: CircleAvatar(
+                      backgroundColor: AppColors.primaryColor,
+                      child: Icon(Icons.add, color: Colors.white),
+                    ),
                   ),
                   contentPadding: EdgeInsetsDirectional.symmetric(
                     horizontal: 8,
@@ -113,4 +88,3 @@ class FruitItem extends StatelessWidget {
     );
   }
 }
-

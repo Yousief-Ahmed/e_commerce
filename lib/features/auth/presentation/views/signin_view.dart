@@ -15,7 +15,11 @@ class SigninView extends StatelessWidget {
     return BlocProvider(
       create: (context) => SigninCubit(getIt.get<AuthRepo>()),
       child: Scaffold(
-        appBar: buildAppBar(context, title: 'تسجيل الدخول'),
+        appBar: buildAppBar(
+          context,
+          title: 'تسجيل الدخول',
+          showBackButton: false,
+        ),
         body: const SigninViewBodyBlocConsumer(),
       ),
     );

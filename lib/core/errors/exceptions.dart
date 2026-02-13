@@ -1,4 +1,4 @@
-class CustomException implements Exception {
+class CustomException {
   final String message;
   CustomException({required this.message});
 

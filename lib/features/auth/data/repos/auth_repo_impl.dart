@@ -37,6 +37,7 @@ class AuthRepoImpl extends AuthRepo {
       );
       var userEntity = UserEntity(name: name, email: email, uid: user.uid);
       await addUserData(user: userEntity);
+      await saveUserData(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
       if (user != null) {
@@ -96,6 +97,7 @@ class AuthRepoImpl extends AuthRepo {
       } else {
         await addUserData(user: userEntity);
       }
+      await saveUserData(user: userEntity);
       return right(userEntity);
     } catch (e) {
       await firebaseAuthService.deleteUser();
@@ -121,6 +123,7 @@ class AuthRepoImpl extends AuthRepo {
       } else {
         await addUserData(user: userEntity);
       }
+      await saveUserData(user: userEntity);
       return right(userEntity);
     } catch (e) {
       await firebaseAuthService.deleteUser();
@@ -146,6 +149,7 @@ class AuthRepoImpl extends AuthRepo {
       } else {
         await addUserData(user: userEntity);
       }
+      await saveUserData(user: userEntity);
       return right(userEntity);
     } catch (e) {
       await firebaseAuthService.deleteUser();

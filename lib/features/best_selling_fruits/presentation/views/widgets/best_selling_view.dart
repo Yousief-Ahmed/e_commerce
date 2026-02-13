@@ -1,4 +1,4 @@
-import 'package:e_commerce/features/auth/presentation/views/widgets/auth_app_bar.dart';
+import 'package:e_commerce/core/helper_functions/build_app_bar.dart';
 import 'package:e_commerce/features/best_selling_fruits/presentation/views/widgets/best_selling_view_body.dart';
 import 'package:flutter/material.dart';
 
