@@ -21,10 +21,7 @@ class DontHaveAccount extends StatelessWidget {
           TextSpan(
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                Navigator.pushNamed(
-                  context,
-                 SignUpView.routeName,
-                );
+                Navigator.pushNamed(context, SignUpView.routeName);
               },
             text: 'قم بإنشاء حساب',
             style: TextStyles.semiBold16.copyWith(

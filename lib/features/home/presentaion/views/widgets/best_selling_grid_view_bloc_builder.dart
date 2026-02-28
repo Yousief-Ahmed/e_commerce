@@ -22,9 +22,7 @@ class BestSellingGridViewBlocBuilder extends StatelessWidget {
         } else {
           return Skeletonizer.sliver(
             enabled: true,
-            child: BestSellingGridView(
-              products: getDummyProducts(5),
-            ),
+            child: BestSellingGridView(products: getDummyProducts(5)),
           );
         }
       },

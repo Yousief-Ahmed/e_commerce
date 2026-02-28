@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 
 class InActiveStepItem extends StatelessWidget {
   final String title, stepNumber;
-  const InActiveStepItem({super.key, required this.title, required this.stepNumber});
+  const InActiveStepItem({
+    super.key,
+    required this.title,
+    required this.stepNumber,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   final ValueChanged<int> onItemTapped;
-  const CustomBottomNavigationBar({super.key, required  this.onItemTapped});
+  const CustomBottomNavigationBar({super.key, required this.onItemTapped});
 
   @override
   State<CustomBottomNavigationBar> createState() =>

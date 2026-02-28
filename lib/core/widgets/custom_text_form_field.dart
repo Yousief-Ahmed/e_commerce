@@ -12,13 +12,15 @@ class CustomTextFormField extends StatelessWidget {
     super.key,
     this.suffixIcon,
     required this.hintText,
-    required this.keyboardType, this.onSaved, this.obscureText =false,
+    required this.keyboardType,
+    this.onSaved,
+    this.obscureText = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      obscureText: obscureText ,
+      obscureText: obscureText,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'هذا الحقل مطلوب';

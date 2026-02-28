@@ -1,17 +1,11 @@
 import 'package:e_commerce/core/widgets/custom_text_form_field.dart';
 import 'package:e_commerce/features/checkout/domain/entities/order_entity.dart';
-import 'package:flutter/foundation.dart';
+import 'package:e_commerce/features/checkout/presentation/manager/provider/reference_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddressInputSection extends StatefulWidget {
-  final GlobalKey<FormState> formKey;
-  final ValueListenable<AutovalidateMode> valueListenable;
-  const AddressInputSection({
-    super.key,
-    required this.formKey,
-    required this.valueListenable,
-  });
+  const AddressInputSection({super.key});
 
   @override
   State<AddressInputSection> createState() => _AddressInputSectionState();
@@ -23,11 +17,12 @@ class _AddressInputSectionState extends State<AddressInputSection>
   Widget build(BuildContext context) {
     super.build(context);
     var orderEntity = context.read<OrderEntity>();
+    final providerRefs = context.read<CheckoutRefs>();
     return SingleChildScrollView(
       child: ValueListenableBuilder(
-        valueListenable: widget.valueListenable,
+        valueListenable: providerRefs.autovalidateNotifier,
         builder: (context, value, child) => Form(
-          key: widget.formKey,
+          key: providerRefs.formKey,
           autovalidateMode: value,
           child: Column(
             spacing: 8,

@@ -1,12 +1,15 @@
 import 'package:e_commerce/core/utils/app_text_styles.dart';
+import 'package:e_commerce/features/checkout/domain/entities/order_entity.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/payment_item.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class OrderSummary extends StatelessWidget {
   const OrderSummary({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var orderEntity = context.read<OrderEntity>();
     return PaymentItem(
       title: 'ملخص الطلب',
       child: Column(
@@ -19,7 +22,7 @@ class OrderSummary extends StatelessWidget {
               ),
               Spacer(),
               Text(
-                '150 جنيه',
+                '${orderEntity.cartEntity.calculateTotalCartPrice().toString()} جنيه',
                 style: TextStyles.semiBold16.copyWith(color: Color(0xFF0C0D0D)),
               ),
             ],
@@ -53,7 +56,7 @@ class OrderSummary extends StatelessWidget {
               ),
               Spacer(),
               Text(
-                '180 جنيه',
+                '${orderEntity.cartEntity.calculateTotalCartPrice() + 30} جنيه',
                 style: TextStyles.bold16.copyWith(color: Color(0xFF0C0D0D)),
               ),
             ],

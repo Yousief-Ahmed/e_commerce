@@ -1,6 +1,4 @@
-
 import 'package:e_commerce/core/entities/review_entity.dart';
-
 
 class ProductEntity {
   final String name;

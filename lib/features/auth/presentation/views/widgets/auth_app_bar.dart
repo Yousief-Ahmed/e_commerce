@@ -1,7 +1,5 @@
 import 'package:e_commerce/core/utils/app_text_styles.dart';
 import 'package:e_commerce/core/widgets/notification_icon.dart';
-import 'package:e_commerce/features/home/presentaion/views/main_view.dart';
-import 'package:e_commerce/features/home/presentaion/views/widgets/home_view.dart';
 import 'package:flutter/material.dart';
 
 AppBar buildAppBar(

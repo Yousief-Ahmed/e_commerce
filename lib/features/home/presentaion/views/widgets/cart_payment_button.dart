@@ -29,8 +29,11 @@ class CartPaymentButton extends StatelessWidget {
               onPressed: () {
                 // Navigate to checkout view
                 if (context.read<CartCubit>().cartEntity.cartItems.isNotEmpty) {
-                  Navigator.pushNamed(context, CheckoutView.routeName,
-                  arguments: context.read<CartCubit>().cartEntity);
+                  Navigator.pushNamed(
+                    context,
+                    CheckoutView.routeName,
+                    arguments: context.read<CartCubit>().cartEntity,
+                  );
                 } else {
                   buildErrorBar(message: 'لا يوجد منتجات فى السلة');
                 }

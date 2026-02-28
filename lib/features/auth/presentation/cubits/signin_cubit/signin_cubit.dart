@@ -26,6 +26,7 @@ class SigninCubit extends Cubit<SigninState> {
       (userEntity) => emit(SigninSuccess(userEntity: userEntity)),
     );
   }
+
   Future<void> signInWithFacebook() async {
     emit(SigninLoading());
     var result = await authRepo.signInWithFacebook();
@@ -34,6 +35,7 @@ class SigninCubit extends Cubit<SigninState> {
       (userEntity) => emit(SigninSuccess(userEntity: userEntity)),
     );
   }
+
   Future<void> signInWithApple() async {
     emit(SigninLoading());
     var result = await authRepo.signInWithApple();

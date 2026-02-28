@@ -1,17 +1,21 @@
 class ShippingInfoEntity {
-   String? name;
-   String? phone;
-   String? email;
-   String? address;
-   String? city;
-   String? addressDetails;
+  String? name;
+  String? phone;
+  String? email;
+  String? address;
+  String? city;
+  String? addressDetails;
 
   ShippingInfoEntity({
-     this.name,
-     this.phone,
-     this.email,
-     this.address,
-     this.city,
-     this.addressDetails,
+    this.name,
+    this.phone,
+    this.email,
+    this.address,
+    this.city,
+    this.addressDetails,
   });
+
+  String getFullAddress() {
+    return "$address, $addressDetails, $city";
+  }
 }

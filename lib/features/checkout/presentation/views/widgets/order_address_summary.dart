@@ -1,14 +1,19 @@
 import 'package:e_commerce/core/utils/app_images.dart';
 import 'package:e_commerce/core/utils/app_text_styles.dart';
+import 'package:e_commerce/features/checkout/domain/entities/order_entity.dart';
+import 'package:e_commerce/features/checkout/presentation/manager/provider/reference_provider.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/payment_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class OrderAddressSummary extends StatelessWidget {
   const OrderAddressSummary({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var orderEntity = context.read<OrderEntity>();
+    var providerRef = context.read<CheckoutRefs>();
     return PaymentItem(
       title: "عنوان التوصيل ",
       child: Row(
@@ -16,7 +21,7 @@ class OrderAddressSummary extends StatelessWidget {
           SvgPicture.asset(Assets.imagesOutlinedLocation),
           const SizedBox(width: 8),
           Text(
-            'شارع النيل، مبنى رقم ١٢٣',
+            orderEntity.shippingInfo.getFullAddress(),
             style: TextStyles.regular16.copyWith(
               color: Color(0xFF4E5556),
               overflow: TextOverflow.ellipsis,
@@ -35,7 +40,13 @@ class OrderAddressSummary extends StatelessWidget {
                 ),
               ],
             ),
-            onTap: () {},
+            onTap: () {
+              providerRef.pageController.animateToPage(
+                1,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.bounceIn,
+              );
+            },
           ),
         ],
       ),

@@ -11,10 +11,7 @@ class ActiveShippingItemDot extends StatelessWidget {
       height: 18,
       decoration: ShapeDecoration(
         color: AppColors.primaryColor,
-        shape: OvalBorder(
-          
-          side: BorderSide(color: Colors.white, width: 4.0),
-        ),
+        shape: OvalBorder(side: BorderSide(color: Colors.white, width: 4.0)),
       ),
     );
   }

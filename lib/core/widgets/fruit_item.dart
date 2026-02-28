@@ -59,7 +59,7 @@ class FruitItem extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ),  
+                    ),
                   ),
                   trailing: InkWell(
                     onTap: () {

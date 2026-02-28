@@ -13,7 +13,6 @@ class OrDivider extends StatelessWidget {
         Text("أو", style: TextStyles.semiBold16),
         SizedBox(width: 18),
         Expanded(child: Divider(color: Color(0xFFDDDFDF))),
-       
       ],
     );
   }

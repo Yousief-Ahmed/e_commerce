@@ -1,4 +1,3 @@
-
 import 'package:e_commerce/core/entities/review_entity.dart';
 
 class ReviewModel {
@@ -45,7 +44,8 @@ class ReviewModel {
       rate: rate,
     );
   }
-  toJson(){
+
+  toJson() {
     return {
       'name': name,
       'image': image,
